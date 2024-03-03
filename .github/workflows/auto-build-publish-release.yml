@@ -1,14 +1,14 @@
 name: Auto Build, Publish, Releasing
 
 on:
-  
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      MAVEN_PASS: ${{ secrets.MAVEN_PASS }}
-      MAVEN_USER: ${{ secrets.MAVEN_USER }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -29,3 +29,9 @@ jobs:
         uses: gradle/gradle-build-action@v2.4.2
         with:
           arguments: build
+          
+      - name: Upload JAR file
+        uses: actions/upload-artifact@v2
+        with:
+          name: ldlib
+          path: build/libs/*.jar
