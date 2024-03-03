@@ -26,9 +26,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build
-        uses: gradle/gradle-build-action@v2.4.2
-        with:
-          arguments: build
+        run: gradlew build
           
       - name: Upload JAR file
         uses: actions/upload-artifact@v2
