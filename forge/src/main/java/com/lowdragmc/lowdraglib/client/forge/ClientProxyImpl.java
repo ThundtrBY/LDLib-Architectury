@@ -50,7 +50,7 @@ public class ClientProxyImpl extends CommonProxyImpl {
             if (Platform.isDevEnv()) {
                 ItemBlockRenderTypes.setRenderLayer(TestBlock.BLOCK, RenderType.cutoutMipped());
             }
-            Minecraft.getInstance().getMainRenderTarget().enableStencil();
+            Minecraft.getInstance().getMainRenderTarget();
         });
     }
 
